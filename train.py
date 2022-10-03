@@ -17,12 +17,11 @@ def count_parameters(model):
 
 def train(trainconfig):
     losses = []
-    start_step = 0
+    start_step = 1
     max_ssim = 0
     max_psnr = 0
     ssims = []
     psnrs = []
-    start_step = 0
 
     device = trainconfig.device
     model = network.B_transformer()

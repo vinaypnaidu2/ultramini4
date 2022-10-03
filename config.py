@@ -5,7 +5,7 @@ import torch
 warnings.filterwarnings('ignore')
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--steps', type = int, default = 20000)
+parser.add_argument('--steps', type = int, default = 50000)
 parser.add_argument('--resume', type = bool, default = True)
 parser.add_argument('--eval_step', type = int, default = 100)
 parser.add_argument('--lr', default = 0.0005, type = float, help = 'learning rate')
@@ -22,5 +22,5 @@ model_name = trainconfig.dataset + '_' + trainconfig.type
 trainconfig.model_dir = '/kaggle/working/ultramini4/' + model_name +'.pk'
 
 #REMEMBER THIS BOI
-# trainconfig.model_dir = './' + model_name +'.pk'
+trainconfig.model_dir = './' + model_name +'.pk'
 
