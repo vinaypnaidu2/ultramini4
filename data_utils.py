@@ -13,7 +13,7 @@ class RESIDE(data.Dataset):
         self.train = train
         self.format = format
         self.haze_imgs_dir = os.listdir(os.path.join(path, 'hazy'))
-        self.haze_imgs = [os.path.join(path, 'hazy', img) for img in self.haze_imgs_dir]
+        self.haze_imgs = [os.path.join(path, 'hazy', img) for img in self.haze_imgs_dir if img.endswith('.png')]
         self.clear_dir = os.path.join(path, 'clear')
 
     def __getitem__(self, index):
