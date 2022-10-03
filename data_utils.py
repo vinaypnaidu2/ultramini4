@@ -40,9 +40,9 @@ else:
     path = '/kaggle/input/'
 
 if trainconfig.dataset == "master":
-    train_loader = DataLoader(dataset = RESIDE(path + 'master/MASTER/master-train', train = True), 
+    train_loader = DataLoader(dataset = RESIDE(path + 'master/master/master-train', train = True), 
                                     batch_size = trainconfig.bs, shuffle = True)
-    test_loader = DataLoader(dataset = RESIDE(path + 'master/MASTER/master-val-small', train = False),
+    test_loader = DataLoader(dataset = RESIDE(path + 'master/master/master-val-small', train = False),
                                     batch_size = 1, shuffle = False)
 elif trainconfig.dataset == "residenh":
     if trainconfig.type == "indoor":
