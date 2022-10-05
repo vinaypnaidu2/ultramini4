@@ -52,13 +52,13 @@ def load_simple_list(src_path):
     name_list.sort()
     return name_list
    
-list_s = load_simple_list('./test/hazy')
+list_s = load_simple_list('./master-val/hazy')
 print(list_s)
 
 for image in list_s:
     image_in = Image.open(image).convert('RGB')
     full = tfs_full(image_in).unsqueeze(0).to(device)
     output = my_model(full)
-    save_image(output[0], './test/clear/clear{}'.format(image.split('/')[-1]))
+    save_image(output[0], './master-val/output/output{}'.format(image.split('/')[-1]))
 
 
