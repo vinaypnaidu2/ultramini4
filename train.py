@@ -62,15 +62,11 @@ def train(trainconfig):
         total_loss.backward()
         optimizer.step()
         losses.append(total_loss.item())
-        print(f'\rTrain loss : {total_loss.item():.5f} | Step : {step}/{trainconfig.steps} | Time taken : {(time.time() - start) : .2f}', end = '', flush = True)
+        print(f'\rTrain loss : {total_loss.item():.5f} | Step : {step}/{trainconfig.steps} | Time taken : {(time.time() - start):.2f}', end = '', flush = True)
                         
-        if not os.path.exists(trainconfig.save_dir):
-            os.mkdir(trainconfig.save_dir)
-
         if step % trainconfig.eval_step == 0:
             with torch.no_grad():
                 ssim_eval, psnr_eval = test(model, test_loader)
-            print(f'\nStep : {step} | SSIM : {ssim_eval:.4f} | PSNR : {psnr_eval:.4f}')
             ssims.append(ssim_eval)
             psnrs.append(psnr_eval)
 
@@ -97,9 +93,6 @@ def train(trainconfig):
                         'losses' : losses,
                         'model' : model.state_dict()
                 }, trainconfig.model_dir[:-3] + '_fullepoch.pk')
-
-            out_image = torch.cat([haze[0:3], output[0:3], clear[0:3]], dim = 0)
-            save_image(out_image, trainconfig.save_dir + '/epoch{}.jpg'.format(step + 1))
 
 def test(model, test_loader):
     model.eval()
