@@ -67,9 +67,9 @@ elif trainconfig.dataset == "reside":
         test_loader = DataLoader(dataset = RESIDE(path + 'resideh/RESIDE/SOTS/outdoor', train = False), 
                                     batch_size = 1, shuffle = False)
 elif trainconfig.dataset == "nhhaze":
-        train_loader = DataLoader(dataset = RESIDE(path + 'NH-HAZE/train', train = True), 
+        train_loader = DataLoader(dataset = RESIDE(path + 'nhhaze/NH-HAZE/train', train = True), 
                                     batch_size = trainconfig.bs, shuffle = True)
-        test_loader = DataLoader(dataset = RESIDE(path + 'NH-HAZE/val', train = False),
+        test_loader = DataLoader(dataset = RESIDE(path + 'nhhaze/NH-HAZE/val', train = False),
                                     batch_size = 1, shuffle = False)
 elif trainconfig.dataset == "ihaze":
         train_loader = DataLoader(dataset = RESIDE(path + 'I-HAZE/train', train = True), 
